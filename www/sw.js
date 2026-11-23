@@ -1,5 +1,5 @@
-const CACHE_NAME = "maesa-minahasa-v5";
-const ASSETS = ["./", "./index.html", "./style.css?v=5", "./app.js?v=5", "./manifest.json"];
+const CACHE_NAME = "maesa-minahasa-v7";
+const ASSETS = ["./", "./index.html", "./style.css?v=7", "./app.js?v=7", "./manifest.json"];
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();

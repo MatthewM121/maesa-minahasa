@@ -17,7 +17,6 @@ const AudioEngine = {
       this.currentAudio = null;
     }
   },
-  // Memutar file MP3/WAV milik sendiri; jika file belum ada, otomatis pakai suara bawaan
   playCustomOrFallback(src, fallbackFn) {
     this.stopCustom();
     if (!src) {
@@ -78,36 +77,49 @@ const AudioEngine = {
 };
 
 // =========================================================
-// TAMBAH UNIT / PELAJARAN / SOAL BARU DI ARRAY "UNITS" INI
+// KURIKULUM 5 UNIT (TOTAL 51 SOAL FAKTUAL MINAHASA)
 // =========================================================
 const UNITS = [
   {
     id: "unit-1",
     title: "Unit 1: Seni Tari & Musik",
-    desc: "Kabasaran, Maengket, dan Kolintang",
-    color: "#C81E1E",
+    desc: "Kabasaran, Maengket, Katrili, dan Kolintang",
+    color: "#A61C1C",
     lessons: [
       {
         id: "u1-l1",
         title: "Tari Kabasaran",
         icon: "⚔️",
-        xpReward: 25,
+        xpReward: 30,
         questions: [
           {
             type: "multiple-choice",
             image: "./assets/images/kabasaran.jpg",
             visual: "⚔️🛡️",
-            question: "Apa sebutan bagi prajurit pria yang membawakan Tari Kabasaran di masa lampau?",
-            options: ["Waraney", "Kapel", "Tonaas", "Walian"],
+            question: "Apa sebutan bagi prajurit penjaga negeri yang membawakan Tari Kabasaran di masa lampau?",
+            options: ["Waraney", "Walian", "Potuasan", "Pasiowan"],
             answer: "Waraney",
-            explanation: "Dahulu penari Kabasaran adalah para penjaga desa yang menjadi Waraney (prajurit perang) saat wilayah Minahasa terancam."
+            explanation: "Pada masa lalu, penari Kabasaran merupakan para Waraney (prajurit perang) yang bertugas menjaga keamanan masyarakat Minahasa."
+          },
+          {
+            type: "matching-pairs",
+            visual: "🗡️🛡️",
+            question: "Cocokkan perlengkapan Tari Kabasaran dengan artinya:",
+            pairs: [
+              { left: "Santi", right: "Pedang untuk jurus menebas" },
+              { left: "Wengkouw", right: "Tombak untuk jurus menusuk" },
+              { left: "Kelung", right: "Perisai untuk menangkis" },
+              { left: "Rerenge'en", right: "Lonceng kuningan pada busana" }
+            ],
+            explanation: "Dalam aturan gerak Kabasaran, Santi dipakai menebas, Wengkouw untuk menusuk, Kelung untuk menangkis, dan Rerenge'en sebagai giring-giring."
           },
           {
             type: "true-false",
-            visual: "🧣🗡️",
-            question: "Benar atau Salah: Busana adat Tari Kabasaran didominasi warna biru laut sebagai lambang ketenangan.",
-            answer: "Salah",
-            explanation: "Salah! Busana penari Kabasaran didominasi warna merah menyala yang melambangkan keberanian para Waraney."
+            image: "./assets/images/kabasaran2.jpg",
+            visual: "🧣",
+            question: "Benar atau Salah: Busana adat penari Kabasaran didominasi warna merah dan topi berhias paruh burung Uwak (Rangkong).",
+            answer: "Benar",
+            explanation: "Benar! Busana perang Kabasaran (Pakeyan Nuak) didominasi warna merah dengan hiasan paruh burung Uwak pada penutup kepalanya."
           },
           {
             type: "word-bank",
@@ -115,26 +127,26 @@ const UNITS = [
             question: "Susun kalimat berikut tentang fungsi Tari Kabasaran masa kini:",
             bank: ["tamu", "Tari", "penyambutan", "Kabasaran", "untuk", "penting"],
             answer: "Tari Kabasaran untuk penyambutan tamu penting",
-            explanation: "Kini Tari Kabasaran menjadi tarian penyambutan tamu kehormatan dan perayaan budaya."
+            explanation: "Saat ini Tari Kabasaran menjadi tarian penyambutan tamu agung dan upacara adat Minahasa."
           }
         ]
       },
       {
         id: "u1-l2",
-        title: "Tari Maengket",
+        title: "Maengket & Katrili",
         icon: "🌾",
-        xpReward: 25,
+        xpReward: 30,
         questions: [
           {
             type: "matching-pairs",
             visual: "💃🌾",
-            question: "Cocokkan nama babak Tari Maengket dengan maknanya:",
+            question: "Cocokkan tiga babak utama Tari Maengket dengan maknanya:",
             pairs: [
-              { left: "Maowey Kamberu", right: "Syukur panen padi" },
-              { left: "Marambak", right: "Gotong royong bangun rumah" },
-              { left: "Lalayaan", right: "Pergaulan muda-mudi" }
+              { left: "Maowey Kamberu", right: "Rasa syukur atas panen padi" },
+              { left: "Marambak", right: "Gotong royong membangun rumah" },
+              { left: "Lalayaan", right: "Tari pergaulan muda-mudi" }
             ],
-            explanation: "Tari Maengket terdiri atas 3 babak utama: Maowey Kamberu, Marambak, dan Lalayaan."
+            explanation: "Tari Maengket memiliki 3 babak: Maowey Kamberu (panen), Marambak (bangun rumah), dan Lalayaan (muda-mudi)."
           },
           {
             type: "fill-input",
@@ -143,7 +155,15 @@ const UNITS = [
             hint: "Petunjuk: diawali huruf 'Ma...'",
             answer: "Marambak",
             acceptedAnswers: ["marambak"],
-            explanation: "Babak Marambak merepresentasikan kebersamaan warga saat membantu membangun rumah baru."
+            explanation: "Babak Marambak menampilkan semangat kebersamaan warga saat membangun rumah baru."
+          },
+          {
+            type: "multiple-choice",
+            visual: "💃🕺",
+            question: "Tarian pergaulan Minahasa yang lahir dari akulturasi budaya Eropa (Portugis/Belanda) dengan aba-aba pemimpin tari disebut...",
+            options: ["Tari Katrili", "Tari Cakalele", "Tari Saman", "Tari Pakarena"],
+            answer: "Tari Katrili",
+            explanation: "Tari Katrili (berasal dari Quadrille) berkembang menjadi tarian pergaulan khas masyarakat Minahasa dan Manado."
           }
         ]
       },
@@ -151,14 +171,41 @@ const UNITS = [
         id: "u1-l3",
         title: "Musik Kolintang",
         icon: "🎶",
-        xpReward: 30,
+        xpReward: 35,
         questions: [
+          {
+            type: "true-false",
+            visual: "🌍✨",
+            question: "Benar atau Salah: Alat musik Kolintang resmi ditetapkan UNESCO sebagai Warisan Budaya Takbenda pada 5 Desember 2024.",
+            answer: "Benar",
+            explanation: "Benar! Kolintang masuk dalam daftar Representative List of the Intangible Cultural Heritage of Humanity UNESCO pada 5 Desember 2024."
+          },
+          {
+            type: "multiple-choice",
+            visual: "🪵",
+            question: "Nama 'Kolintang' berasal dari perpaduan bunyi nada bilah kayunya, yaitu...",
+            options: ["Tong (rendah), Ting (tinggi), Tang (tengah)", "Tung, Tang, Tek", "Ko, Lin, Tang", "Gong, Ting, Bung"],
+            answer: "Tong (rendah), Ting (tinggi), Tang (tengah)",
+            explanation: "Masyarakat Minahasa menamai instrumen ini dari bunyi bilah kayunya: 'tong' (rendah), 'ting' (tinggi), dan 'tang' (tengah)."
+          },
+          {
+            type: "matching-pairs",
+            visual: "🎵",
+            question: "Cocokkan nama instrumen dalam ansambel Kolintang dengan perannya:",
+            pairs: [
+              { left: "Ina Tawong / Ina Esa", right: "Pembawa melodi lagu" },
+              { left: "Uner", right: "Pengiring nada tinggi (Alto)" },
+              { left: "Karua", right: "Pengiring nada tengah (Tenor)" },
+              { left: "Loway", right: "Penghasil nada rendah (Bass)" }
+            ],
+            explanation: "Ansambel Kolintang memiliki pembagian suara lengkap: Ina (melodi), Uner (alto), Karua (tenor), Cella (cello), dan Loway (bass)."
+          },
           {
             type: "audio-quiz",
             image: "./assets/images/kolintang.jpg",
             visual: "🪵🎼",
             audioFile: "./assets/audio/o-ina-ni-keke.mp3",
-            question: "Putar audio/melodi Kolintang di bawah ini! Lagu daerah Minahasa apakah yang dimainkan?",
+            question: "Putar melodi Kolintang berikut! Lagu daerah Minahasa apakah yang dimainkan?",
             melody: [
               { freq: 329.63, delay: 0 },
               { freq: 392.00, delay: 320 },
@@ -167,16 +214,9 @@ const UNITS = [
               { freq: 349.23, delay: 1280 },
               { freq: 293.66, delay: 1600 }
             ],
-            options: ["O Ina Ni Keke", "Ampar-Ampar Pisang", "Gundul Pacul", "Rasa Sayange"],
+            options: ["O Ina Ni Keke", "Rasa Sayange", "Ampar-Ampar Pisang", "Yamko Rambe Yamko"],
             answer: "O Ina Ni Keke",
-            explanation: "Penggalan nada 3-5-5-3-4-2 merupakan pembuka lagu daerah Minahasa terkenal 'O Ina Ni Keke'."
-          },
-          {
-            type: "true-false",
-            visual: "🌍✨",
-            question: "Benar atau Salah: Kolintang resmi diakui UNESCO sebagai Warisan Budaya Takbenda pada 5 Desember 2024.",
-            answer: "Benar",
-            explanation: "Benar! Kolintang masuk dalam daftar Warisan Budaya Takbenda UNESCO pada 5 Desember 2024."
+            explanation: "Susunan nada 3-5-5-3-4-2 adalah pembuka lagu daerah Minahasa 'O Ina Ni Keke'."
           }
         ]
       }
@@ -185,19 +225,40 @@ const UNITS = [
   {
     id: "unit-2",
     title: "Unit 2: Bahasa & Filosofi",
-    desc: "Bahasa Tombulu & Si Tou Timou Tumou Tou",
-    color: "#16A34A",
+    desc: "Sub-etnis, Bahasa Tombulu, & Mapalus",
+    color: "#0F766E",
     lessons: [
       {
         id: "u2-l1",
-        title: "Kosakata Tombulu",
+        title: "Sub-Etnis & Bahasa",
         icon: "🗣️",
-        xpReward: 25,
+        xpReward: 30,
         questions: [
+          {
+            type: "multiple-choice",
+            visual: "🗺️",
+            question: "Kata 'Minahasa' berasal dari kata 'Mina-esa' atau 'Minaesa'an' yang berarti...",
+            options: ["Menjadi satu / Persatuan", "Tanah pegunungan tinggi", "Pulau yang dikelilingi laut", "Negeri para nelayan"],
+            answer: "Menjadi satu / Persatuan",
+            explanation: "Mina-esa berarti menjadi satu atau bersatu, merujuk pada bersatunya sub-etnis di Tanah Malesung."
+          },
+          {
+            type: "multiple-choice",
+            visual: "👥",
+            question: "Manakah yang termasuk kelompok sub-etnis asli dalam rumpun Minahasa?",
+            options: [
+              "Tombulu, Tonsea, Tontemboan, Toulour, Tonsawang",
+              "Sangir, Talaud, Siau, Bolmong",
+              "Toraja, Bugis, Makassar, Mandar",
+              "Gorontalo, Suwawa, Limboto"
+            ],
+            answer: "Tombulu, Tonsea, Tontemboan, Toulour, Tonsawang",
+            explanation: "Sub-etnis Minahasa meliputi Tombulu, Tonsea, Tontemboan, Toulour (Tondano), Tonsawang, Pasan/Ratahan, Ponosakan, dan Bantik."
+          },
           {
             type: "matching-pairs",
             visual: "📖",
-            question: "Cocokkan kosakata bahasa daerah Minahasa (Tombulu) dengan artinya:",
+            question: "Cocokkan kosakata Bahasa Tombulu (Minahasa) berikut dengan artinya:",
             pairs: [
               { left: "Wale", right: "Rumah" },
               { left: "Teles", right: "Beli" },
@@ -207,37 +268,73 @@ const UNITS = [
             explanation: "Wale = rumah, Teles = beli, Esa = satu, dan Tou = manusia/orang."
           },
           {
+            type: "fill-input",
+            visual: "🙏",
+            question: "Ketik kata salam pembuka yang ramah dan penuh hormat khas masyarakat Minahasa:",
+            hint: "Petunjuk: diawali huruf 'Ta...'",
+            answer: "Tabea",
+            acceptedAnswers: ["tabea"],
+            explanation: "Tabea adalah salam hormat tradisional masyarakat Minahasa untuk menyapa tamu atau sesama warga."
+          },
+          {
             type: "word-bank",
             visual: "🛍️",
-            question: "Susun arti dari frasa lagu 'tumeles waleko':",
+            question: "Susun arti dari penggalan lirik lagu 'tumeles waleko':",
             bank: ["membeli", "dan", "rumah", "Teles", "artinya", "Wale"],
             answer: "Teles artinya membeli dan Wale rumah",
-            explanation: "Dalam bahasa Tombulu, 'teles' berarti beli dan 'wale' berarti rumah."
+            explanation: "Dalam Bahasa Tombulu, 'teles' berarti beli dan 'wale' berarti rumah."
           }
         ]
       },
       {
         id: "u2-l2",
-        title: "Filosofi & Mapalus",
+        title: "Filosofi & Struktur Adat",
         icon: "🤝",
         xpReward: 30,
         questions: [
           {
-            type: "multiple-choice",
+            type: "word-bank",
             visual: "🌟",
-            question: "Siapa tokoh nasional asal Minahasa yang mempopulerkan filosofi 'Si Tou Timou Tumou Tou'?",
-            options: ["Dr. Sam Ratulangi", "A.A. Maramis", "Maria Walanda Maramis", "Pierre Tendean"],
-            answer: "Dr. Sam Ratulangi",
-            explanation: "Dr. Sam Ratulangi merumuskan filosofi 'Si Tou Timou Tumou Tou' (Manusia hidup untuk memanusiakan orang lain)."
+            question: "Susun terjemahan dari semboyan 'Si Tou Timou Tumou Tou':",
+            bank: ["memanusiakan", "hidup", "untuk", "Manusia", "orang", "lain"],
+            answer: "Manusia hidup untuk memanusiakan orang lain",
+            explanation: "Filosofi luhur yang dipopulerkan Dr. Sam Ratulangi ini menekankan bahwa hidup bermakna jika memanusiakan sesama."
           },
           {
             type: "fill-input",
             visual: "🤲🌾",
-            question: "Ketik nama tradisi gotong royong dan kerja sama masyarakat Minahasa:",
+            question: "Ketik nama sistem gotong royong dan kerja sama timbal balik warisan leluhur Minahasa:",
             hint: "Petunjuk: diawali huruf 'Ma...'",
             answer: "Mapalus",
             acceptedAnswers: ["mapalus"],
-            explanation: "Mapalus adalah sistem kerja sama timbal balik tradisional masyarakat Minahasa."
+            explanation: "Mapalus adalah etos gotong royong tradisional dalam bertani, membangun rumah, hingga kegiatan sosial."
+          },
+          {
+            type: "matching-pairs",
+            visual: "👑",
+            question: "Cocokkan sebutan pemimpin adat Minahasa masa lampau dengan perannya:",
+            pairs: [
+              { left: "Walian", right: "Pemimpin upacara adat & religi" },
+              { left: "Tonaas", right: "Pemimpin walak & ahli pertanian" },
+              { left: "Teterusan", right: "Panglima perang" },
+              { left: "Potuasan", right: "Penasihat adat" }
+            ],
+            explanation: "Masyarakat Minahasa dahulu tidak mengenal sistem raja, melainkan kepemimpinan Walian, Tonaas, Teterusan, dan Potuasan."
+          },
+          {
+            type: "true-false",
+            visual: "📜",
+            question: "Benar atau Salah: Ungkapan 'Opo Wailan Wangko' dalam bahasa Tombulu berarti Tuhan Yang Maha Besar.",
+            answer: "Benar",
+            explanation: "Benar! 'Opo Wailan Wangko' merupakan sebutan untuk Tuhan Yang Maha Agung dalam tradisi bahasa Tombulu."
+          },
+          {
+            type: "multiple-choice",
+            visual: "🏔️",
+            question: "Apakah nama kuno tanah Minahasa sebelum istilah 'Minahasa' populer digunakan?",
+            options: ["Malesung", "Majapahit", "Sriwijaya", "Nusa Ina"],
+            answer: "Malesung",
+            explanation: "Secara historis dan tradisi lisan, tanah Minahasa dahulu dikenal dengan nama Tanah Malesung."
           }
         ]
       }
@@ -246,59 +343,127 @@ const UNITS = [
   {
     id: "unit-3",
     title: "Unit 3: Arsitektur & Situs",
-    desc: "Walewangko, Waruga & Watu Pinawetengan",
-    color: "#D97706",
+    desc: "Walewangko, Waruga, Pinawetengan, Moraya",
+    color: "#B45309",
     lessons: [
       {
         id: "u3-l1",
         title: "Rumah Walewangko",
         icon: "🏛️",
-        xpReward: 25,
+        xpReward: 30,
         questions: [
           {
             type: "fill-input",
             image: "./assets/images/walewangko.jpg",
             visual: "🪜🏠🪜",
-            question: "Apa sebutan rumah adat panggung khas Minahasa yang memiliki dua tangga di kanan dan kiri bagian depan?",
-            hint: "Petunjuk: Walewangko atau Rumah Pewaris",
+            question: "Ketik nama rumah adat panggung tradisional Minahasa yang juga dikenal sebagai Rumah Pewaris:",
+            hint: "Petunjuk: Wale...",
             answer: "Walewangko",
             acceptedAnswers: ["walewangko", "rumah pewaris", "pewaris"],
-            explanation: "Rumah Pewaris atau Walewangko adalah rumah panggung kayu dengan dua tangga di depan."
+            explanation: "Walewangko (rumah besar) atau Rumah Pewaris adalah rumah tradisional masyarakat Minahasa."
+          },
+          {
+            type: "multiple-choice",
+            visual: "🪜",
+            question: "Apa ciri khas paling ikonik di bagian depan Rumah Pewaris (Walewangko)?",
+            options: [
+              "Memiliki dua tangga di sisi kiri dan kanan",
+              "Atapnya berbentuk perahu terbalik",
+              "Tidak memiliki jendela sama sekali",
+              "Dibangun dari batu karang laut"
+            ],
+            answer: "Memiliki dua tangga di sisi kiri dan kanan",
+            explanation: "Rumah Pewaris memiliki dua tangga di kanan dan kiri depan, yang menurut tradisi lokal bermakna menangkal roh jahat."
+          },
+          {
+            type: "word-bank",
+            visual: "🏠",
+            question: "Susun ciri bagian depan rumah adat Walewangko:",
+            bank: ["tangga", "memiliki", "depan", "Walewangko", "dua", "di"],
+            answer: "Walewangko memiliki dua tangga di depan",
+            explanation: "Dua tangga di bagian depan rumah menjadi penanda arsitektur khas Walewangko."
           },
           {
             type: "true-false",
             visual: "🪵",
-            question: "Benar atau Salah: Rumah tradisional Walewangko dibuat bertiang tinggi (panggung) untuk adaptasi terhadap kelembapan, hewan liar, dan gempa.",
+            question: "Benar atau Salah: Struktur kayu rumah panggung Walewangko dirancang tahan terhadap guncangan gempa dan melindungi dari binatang liar.",
             answer: "Benar",
-            explanation: "Benar! Struktur panggung kayu knock-down efektif melindungi penghuni sekaligus tahan gempa."
+            explanation: "Benar! Tiang penyangga tinggi menjaga rumah dari kelembapan dan hewan liar, serta konstruksi sambungan kayu lentur terhadap gempa."
+          },
+          {
+            type: "multiple-choice",
+            visual: "🛋️",
+            question: "Dalam tata ruang Rumah Pewaris (Walewangko), fungsi ruang kolong di bawah rumah di masa lalu adalah...",
+            options: [
+              "Menyimpan hasil panen dan peralatan bertani",
+              "Tempat upacara pemakaman keluarga",
+              "Menjadi kolam ikan air tawar",
+              "Ruang rapat kepala walak"
+            ],
+            answer: "Menyimpan hasil panen dan peralatan bertani",
+            explanation: "Bagian kolong rumah panggung kerap dimanfaatkan sebagai tempat menyimpan peralatan bertani atau hasil bumi."
           }
         ]
       },
       {
         id: "u3-l2",
-        title: "Waruga & Pinawetengan",
+        title: "Waruga & Situs Sejarah",
         icon: "🪨",
-        xpReward: 30,
+        xpReward: 35,
         questions: [
           {
             type: "multiple-choice",
             image: "./assets/images/waruga.jpg",
             visual: "🗿",
-            question: "Bagaimana posisi jenazah di dalam makam batu kuno Minahasa yang disebut Waruga?",
-            options: ["Posisi jongkok seperti bayi di kandungan", "Berbaring telentang menghadap timur", "Duduk di atas kursi kayu", "Dikremasi menjadi abu"],
-            answer: "Posisi jongkok seperti bayi di kandungan",
-            explanation: "Waruga berbentuk rumah batu kecil, dengan jenazah diletakkan dalam posisi jongkok."
+            question: "Di manakah lokasi kompleks situs Waruga terbesar yang memiliki lebih dari 140 makam batu kuno?",
+            options: [
+              "Desa Sawangan, Kec. Airmadidi, Minahasa Utara",
+              "Pulau Bunaken, Manado",
+              "Kota Bitung, Selat Lembeh",
+              "Kecamatan Amurang, Minahasa Selatan"
+            ],
+            answer: "Desa Sawangan, Kec. Airmadidi, Minahasa Utara",
+            explanation: "Kompleks Waruga Sawangan di Airmadidi, Minahasa Utara menyimpan lebih dari 140 makam batu megalitik."
+          },
+          {
+            type: "multiple-choice",
+            visual: "🧭",
+            question: "Bagaimana posisi jenazah di dalam kubur batu Waruga dan ke arah mana posisi tubuhnya dihadapkan?",
+            options: [
+              "Posisi jongkok menghadap ke utara",
+              "Berbaring telentang menghadap ke selatan",
+              "Duduk bersila menghadap ke barat",
+              "Berdiri tegak menghadap ke timur"
+            ],
+            answer: "Posisi jongkok menghadap ke utara",
+            explanation: "Jenazah diletakkan dalam posisi jongkok (seperti bayi dalam kandungan) dan menghadap utara, arah asal nenek moyang."
+          },
+          {
+            type: "fill-input",
+            visual: "🪨",
+            question: "Ketik nama situs batu berukir di Tompaso tempat leluhur Minahasa bermusyawarah membagi wilayah:",
+            hint: "Petunjuk: Watu Pina...",
+            answer: "Watu Pinawetengan",
+            acceptedAnswers: ["watu pinawetengan", "pinawetengan", "batu pinawetengan"],
+            explanation: "Watu Pinawetengan di Tompaso menjadi monumen bersejarah persatuan dan pembagian wilayah keturunan Toar-Lumimuut."
           },
           {
             type: "matching-pairs",
-            visual: "🗺️",
-            question: "Cocokkan situs/ikon Minahasa berikut dengan penjelasannya:",
+            visual: "🏰",
+            question: "Cocokkan situs bersejarah Minahasa dengan lokasinya/peristiwanya:",
             pairs: [
-              { left: "Waruga", right: "Makam batu kuno leluhur" },
-              { left: "Watu Pinawetengan", right: "Batu musyawarah pembagian wilayah" },
-              { left: "Manguni", right: "Burung hantu simbol kebijaksanaan" }
+              { left: "Waruga Sawangan", right: "Kompleks makam batu di Minahasa Utara" },
+              { left: "Watu Pinawetengan", right: "Situs musyawarah adat di Tompaso" },
+              { left: "Benteng Moraya", right: "Situs Perang Tondano di tepi danau" }
             ],
-            explanation: "Waruga adalah makam batu, Watu Pinawetengan situs musyawarah di Tompaso, dan Manguni burung simbol Minahasa."
+            explanation: "Benteng Moraya berada di Tondano (bekas Minawanua), Watu Pinawetengan di Tompaso, dan Waruga Sawangan di Airmadidi."
+          },
+          {
+            type: "true-false",
+            visual: "⏳",
+            question: "Benar atau Salah: Pemerintah kolonial Belanda menghentikan tradisi penguburan di dalam Waruga pada abad ke-19 karena alasan kesehatan (wabah kolera/tifus).",
+            answer: "Benar",
+            explanation: "Benar! Sekitar tahun 1817–1800-an, pemerintah kolonial melarang penguburan dalam Waruga dan menggantinya dengan penguburan di tanah."
           }
         ]
       }
@@ -306,31 +471,63 @@ const UNITS = [
   },
   {
     id: "unit-4",
-    title: "Unit 4: Kuliner & Atribut",
-    desc: "Tinutuan, Nasi Jaha, dan Senjata Peda",
-    color: "#0284C7",
+    title: "Unit 4: Kuliner & Busana Adat",
+    desc: "Tinutuan, Nasi Jaha, & Tenun Bentenan",
+    color: "#0369A1",
     lessons: [
       {
         id: "u4-l1",
-        title: "Kuliner & Senjata",
+        title: "Kuliner Khas Minahasa",
         icon: "🍲",
-        xpReward: 35,
+        xpReward: 30,
         questions: [
           {
             type: "fill-input",
             image: "./assets/images/tinutuan.jpg",
             visual: "🥣🥬",
-            question: "Ketik nama bubur sayuran khas Manado/Minahasa yang terbuat dari beras, labu kuning, kangkung, dan bayam:",
+            question: "Ketik nama bubur sayuran khas Manado/Minahasa berbahan beras, labu kuning, kangkung, bayam, dan jagung:",
             hint: "Petunjuk: diawali huruf 'Ti...'",
             answer: "Tinutuan",
             acceptedAnswers: ["tinutuan", "bubur manado"],
-            explanation: "Tinutuan atau Bubur Manado adalah kuliner sarat sayuran khas Sulawesi Utara."
+            explanation: "Tinutuan (Bubur Manado) biasa disantap pagi hari bersama perkedel nike, ikan asin, atau sambal roa."
+          },
+          {
+            type: "multiple-choice",
+            visual: "🎋🍚",
+            question: "Bagaimanakah proses tradisional memasak 'Nasi Jaha' khas Minahasa?",
+            options: [
+              "Beras ketan, santan, dan jahe dimasukkan ke bambu lalu dibakar",
+              "Beras biasa dikukus di atas daun pisang",
+              "Ketan digoreng dengan minyak kelapa",
+              "Direbus bersama kuah santan di kuali tanah"
+            ],
+            answer: "Beras ketan, santan, dan jahe dimasukkan ke bambu lalu dibakar",
+            explanation: "Nasi Jaha dibuat dari beras ketan, santan, serta bumbu jahe/serai yang dipanggang di dalam batang bambu berlapis daun pisang."
+          },
+          {
+            type: "matching-pairs",
+            visual: "🍽️",
+            question: "Cocokkan nama hidangan khas Sulawesi Utara/Minahasa dengan deskripsinya:",
+            pairs: [
+              { left: "Cakalang Fufu", right: "Ikan cakalang olahan asap jepit bambu" },
+              { left: "Brenebon", right: "Sup kacang merah gurih khas Manado" },
+              { left: "Klappertaart", right: "Kue kelapa muda akulturasi Belanda" },
+              { left: "Panada", right: "Kue goreng isi suwiran ikan cakalang" }
+            ],
+            explanation: "Keempat hidangan ini menjadi ikon kuliner Minahasa-Manado yang memadukan bahan lokal dan akulturasi sejarah."
+          },
+          {
+            type: "true-false",
+            visual: "🐟",
+            question: "Benar atau Salah: Ikan Nike adalah ikan kecil musiman yang menjadi bahan khas pembuatan perkedel pendamping Tinutuan.",
+            answer: "Benar",
+            explanation: "Benar! Perkedel Nike dan sambal roa merupakan pelengkap favorit saat menyantap Tinutuan."
           },
           {
             type: "audio-quiz",
             visual: "🎵🎋",
             audioFile: "./assets/audio/si-patokaan.mp3",
-            question: "Simak audio/nada Kolintang pembuka lagu daerah Minahasa yang sering mengiringi pesta rakyat! Lagu apakah ini?",
+            question: "Simak melodi Kolintang pembuka lagu rakyat Minahasa yang ceria ini! Lagu apakah yang dimainkan?",
             melody: [
               { freq: 392.00, delay: 0 },
               { freq: 392.00, delay: 260 },
@@ -340,61 +537,231 @@ const UNITS = [
               { freq: 440.00, delay: 1300 },
               { freq: 392.00, delay: 1600 }
             ],
-            options: ["Si Patokaan", "Bungong Jeumpa", "Soleram", "Apuse"],
+            options: ["Si Patokaan", "Soleram", "Ampar-Ampar Pisang", "Apuse"],
             answer: "Si Patokaan",
-            explanation: "Melodi bersemangat tersebut adalah pembuka lagu rakyat Minahasa 'Si Patokaan'."
-          },
-          {
-            type: "matching-pairs",
-            visual: "🍽️🗡️",
-            question: "Cocokkan kuliner dan atribut adat Minahasa berikut:",
-            pairs: [
-              { left: "Nasi Jaha", right: "Ketan & santan dibakar dalam bambu" },
-              { left: "Peda / Santi", right: "Senjata parang tradisional" },
-              { left: "Cakalang Fufu", right: "Ikan cakalang olahan asap" }
-            ],
-            explanation: "Nasi Jaha dimasak di bambu, Peda/Santi adalah senjata tradisional, dan Cakalang Fufu adalah ikan asap khas Minahasa."
+            explanation: "Nada gembira tersebut merupakan pembuka lagu daerah Minahasa 'Si Patokaan'."
           }
         ]
-      }
-    ]
-  }
-  /*
-  // CONTOH MENAMBAH UNIT 5 (Hapus tanda komentar /* dan */ /* jika ingin dipakai):
-  ,{
-    id: "unit-5",
-    title: "Unit 5: Pahlawan & Tokoh Minahasa",
-    desc: "Mengenal tokoh sejarah dari Tanah Minahasa",
-    color: "#7C3AED",
-    lessons: [
+      },
       {
-        id: "u5-l1",
-        title: "Pahlawan Nasional",
-        icon: "🎖️",
-        xpReward: 30,
+        id: "u4-l2",
+        title: "Kain Tenun Bentenan",
+        icon: "🧵",
+        xpReward: 35,
         questions: [
           {
             type: "multiple-choice",
-            visual: "🏅",
-            question: "Pahlawan wanita asal Minahasa yang memperjuangkan pendidikan kaum perempuan melalui PIKAT adalah...",
-            options: ["Maria Walanda Maramis", "Cut Nyak Dien", "Dewi Sartika", "Rasuna Said"],
-            answer: "Maria Walanda Maramis",
-            explanation: "Maria Walanda Maramis mendirikan PIKAT (Percintaan Ibu Kepada Anak Turunannya) pada tahun 1917."
+            image: "./assets/images/kain.jpg",
+            visual: "🧣",
+            question: "Apa nama kain tenun ikat ganda sakral khas Minahasa yang sempat tidak diproduksi selama lebih dari 200 tahun?",
+            options: ["Kain Bentenan", "Kain Songket", "Kain Ulap Doyo", "Kain Gringsing"],
+            answer: "Kain Bentenan",
+            explanation: "Kain Bentenan merupakan mahakarya tenun Minahasa yang terakhir ditenun pada abad ke-19 (~1880) sebelum akhirnya dilestarikan kembali."
+          },
+          {
+            type: "word-bank",
+            visual: "🌿",
+            question: "Susun pernyataan mengenai bahan dasar awal Kain Bentenan:",
+            bank: ["dari", "Kain", "serat", "Bentenan", "kayu", "Fuya"],
+            answer: "Kain Bentenan dari serat kayu Fuya",
+            explanation: "Pada awalnya Kain Bentenan dibuat dari serat kulit kayu (Fuya) serta serat pisang/nanas/bambu (Koffo) sebelum memakai benang katun."
+          },
+          {
+            type: "matching-pairs",
+            visual: "🎨",
+            question: "Cocokkan istilah terkait Kain Bentenan dengan maknanya:",
+            pairs: [
+              { left: "Fuya", right: "Serat kulit kayu bahan tenun" },
+              { left: "Koffo", right: "Serat tanaman pisang/nanas/bambu" },
+              { left: "Ka'iwu Patola", right: "Salah satu motif klasik Bentenan" }
+            ],
+            explanation: "Kain Bentenan memiliki 7 motif klasik antara lain Kokerah, Ka'iwu Patola, Sinoi, Tinonton Mata, Tinompak Kuda, Pinatikan, dan Tonilama."
+          },
+          {
+            type: "true-false",
+            visual: "👘",
+            question: "Benar atau Salah: Pada masa lampau, Kain Bentenan dianggap sakral dan dipakai oleh pemimpin adat (Tonaas) serta pemimpin upacara (Walian).",
+            answer: "Benar",
+            explanation: "Benar! Kain Bentenan digunakan dalam upacara daur hidup, pernikahan, hingga ritual adat oleh Tonaas dan Walian."
+          },
+          {
+            type: "multiple-choice",
+            visual: "👔",
+            question: "Apakah nama baju adat tradisional pria Minahasa berwarna putih/gelap dengan potongan leher tertutup yang kerap dipadukan dengan selendang adat?",
+            options: ["Baju Baniang", "Baju Beskap", "Baju Teluk Belanga", "Baju Bodo"],
+            answer: "Baju Baniang",
+            explanation: "Pria Minahasa mengenakan Baju Baniang (lengan panjang berkerah tertutup) sedangkan wanita mengenakan kebaya khas Minahasa."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "unit-5",
+    title: "Unit 5: Tokoh & Alam Minahasa",
+    desc: "Pahlawan Nasional & Geografi Sulut",
+    color: "#6D28D9",
+    lessons: [
+      {
+        id: "u5-l1",
+        title: "Pahlawan Minahasa",
+        icon: "🎖️",
+        xpReward: 35,
+        questions: [
+          {
+            type: "multiple-choice",
+            image: "./assets/images/tokoh.jpg",
+            visual: "🎓",
+            question: "Tokoh Minahasa kelahiran Tondano (1890) yang meraih gelar doktor di Swiss, menjadi Gubernur Sulawesi pertama, dan anggota PPKI adalah...",
+            options: ["Dr. Sam Ratulangi", "A.A. Maramis", "L.N. Palar", "Arnold Mononutu"],
+            answer: "Dr. Sam Ratulangi",
+            explanation: "Dr. G.S.S.J. Sam Ratulangi adalah Pahlawan Nasional, pendidik, jurnalis, sekaligus Gubernur Sulawesi yang pertama."
+          },
+          {
+            type: "word-bank",
+            visual: "👩‍🏫",
+            question: "Susun kalimat tentang perjuangan Maria Walanda Maramis pada tahun 1917:",
+            bank: ["perempuan", "mendirikan", "untuk", "PIKAT", "Maramis", "pendidikan"],
+            answer: "Maramis mendirikan PIKAT untuk pendidikan perempuan",
+            explanation: "Maria Walanda Maramis mendirikan organisasi PIKAT (Percintaan Ibu Kepada Anak Turunannya) untuk memajukan pendidikan perempuan."
+          },
+          {
+            type: "matching-pairs",
+              image: "./assets/images/pahlawan.jpg",
+            visual: "🇮🇩",
+            question: "Cocokkan nama Pahlawan Nasional asal Minahasa dengan jasa utamanya:",
+            pairs: [
+              { left: "A.A. Maramis", right: "Anggota Panitia Sembilan & Menteri Keuangan ORI" },
+              { left: "L.N. Palar", right: "Diplomat ulung RI di PBB" },
+              { left: "Arie Frederik Lasut", right: "Pendiri Jawatan Pertambangan & Geologi" },
+              { left: "John Lie", right: "Laksamana Muda AL penembus blokade" }
+            ],
+            explanation: "Para tokoh Minahasa berperan besar mulai dari perumusan dasar negara, diplomasi PBB, ekonomi, hingga pertahanan laut."
+          },
+          {
+            type: "fill-input",
+            visual: "🏛️",
+            question: "Ketik nama organisasi perempuan yang didirikan oleh Maria Walanda Maramis pada 8 Juli 1917:",
+            hint: "Petunjuk: singkatan 5 huruf kapital (P...)",
+            answer: "PIKAT",
+            acceptedAnswers: ["pikat"],
+            explanation: "PIKAT (Percintaan Ibu Kepada Anak Turunannya) adalah tonggak emansipasi pendidikan wanita di Minahasa."
+          },
+          {
+            type: "true-false",
+            visual: "💰",
+            question: "Benar atau Salah: A.A. Maramis adalah salah satu tokoh asal Minahasa yang ikut menandatangani Piagam Jakarta dan Oeang Repoeblik Indonesia (ORI).",
+            answer: "Benar",
+            explanation: "Benar! Tanda tangan A.A. Maramis tertera pada lembaran Oeang Repoeblik Indonesia (ORI) saat menjabat Menteri Keuangan."
+          }
+        ]
+      },
+      {
+        id: "u5-l2",
+        title: "Alam & Satwa Minahasa",
+        icon: "🌋",
+        xpReward: 35,
+        questions: [
+          {
+            type: "multiple-choice",
+            visual: "🏔️",
+            question: "Gunung di kawasan Langowan, Kabupaten Minahasa (~1.370 mdpl) yang namanya berasal dari tokoh leluhur Minahasa dalam cerita rakyat Tombulu bernama 'Opo Kawatak' adalah",
+            options: ["Gunung Klabat", "Gunung Lokon", "Gunung Kawatak", "Gunung Soputan"],
+            answer: "Gunung Kawatak",
+            explanation: "Gunung Kawatak terletak di kawasan Langowan, Kabupaten Minahasa dan dikenal menyimpan kisah sejarah leluhur Opo Kawatak serta tradisi adat masyarakat setempat."
+          },
+          {
+            type: "fill-input",
+            visual: "🌊",
+            question: "Ketik nama danau vulkanik terbesar di Sulawesi Utara yang dikelilingi oleh wilayah sub-etnis Toulour:",
+            hint: "Petunjuk: Danau Ton...",
+            answer: "Danau Tondano",
+            acceptedAnswers: ["danau tondano", "tondano"],
+            explanation: "Danau Tondano adalah danau terbesar di Sulawesi Utara dan menjadi sumber kehidupan masyarakat Toulour (orang danau)."
+          },
+          {
+            type: "multiple-choice",
+            visual: "🦉",
+            question: "Burung endemik yang menjadi lambang identitas masyarakat Minahasa dan dipercaya sebagai pembawa pesan alam adalah...",
+            options: ["Burung Manguni", "Burung Maleo", "Burung Cenderawasih", "Burung Jalak Bali"],
+            answer: "Burung Manguni",
+            explanation: "Burung Manguni (burung hantu) menjadi simbol kebijaksanaan yang juga tersemat pada lambang resmi kabupaten/kota di Minahasa."
+          },
+          {
+            type: "matching-pairs",
+            visual: "🐒",
+            question: "Cocokkan satwa endemik & asal kata alam Minahasa berikut:",
+            pairs: [
+              { left: "Kalawat (Klabat)", right: "Sebutan lokal untuk Babirusa" },
+              { left: "Yaki", right: "Monyet hitam jambul khas Sulut" },
+              { left: "Tarsius", right: "Primata terkecil bermata besar di Tangkoko" }
+            ],
+            explanation: "Kata 'Klabat' berasal dari bahasa Tonsea 'Kalawat' (babirusa), sedangkan Yaki dan Tarsius hidup di Cagar Alam Tangkoko."
+          },
+          {
+            type: "true-false",
+            visual: "🌋",
+            question: "Benar atau Salah: Gunung Lokon dan Gunung Mahawu berada di wilayah Kota Tomohon, dataran tinggi Minahasa.",
+            answer: "Benar",
+            explanation: "Benar! Kota Tomohon dikenal sebagai kota bunga di dataran tinggi yang diapit oleh Gunung Lokon dan Gunung Mahawu."
           }
         ]
       }
     ]
   }
-  */
 ];
 
 const ENCYCLOPEDIA = [
-  { image: "./assets/images/kabasaran.jpg", title: "⚔️ Tari Kabasaran & Maengket", text: "Tari Kabasaran dibawakan oleh para Waraney berpakaian merah. Tari Maengket adalah tarian rakyat berpasangan dengan 3 babak: Maowey Kamberu (panen), Marambak (gotong royong bangun rumah), dan Lalayaan (muda-mudi)." },
-  { image: "./assets/images/kolintang.jpg", title: "🪵 Alat Musik Kolintang", text: "Alat musik pukul dari bilah kayu lokal Minahasa. Pada 5 Desember 2024, Kolintang resmi ditetapkan UNESCO sebagai Warisan Budaya Takbenda." },
-  { title: "🗣️ Rumpun Bahasa Minahasa", text: "Minahasa memiliki beberapa sub-bahasa seperti Tombulu, Tonsea, Tontemboan, Toulour (Tondano), dan Tonsawang. Contoh kata: Wale (rumah), Teles (beli), Esa (satu), Tou (manusia)." },
-  { image: "./assets/images/walewangko.jpg", title: "🏛️ Walewangko & Waruga", text: "Walewangko (Rumah Pewaris) adalah rumah panggung dengan 2 tangga di depan. Waruga adalah sarkofagus batu kuno tempat makam leluhur dalam posisi jongkok." },
-  { title: "🪨 Watu Pinawetengan", text: "Situs batu berukir di Kecamatan Tompaso tempat para leluhur sub-etnis Minahasa bermusyawarah membagi wilayah secara damai." },
-  { image: "./assets/images/tinutuan.jpg", title: "🍲 Tinutuan & Nasi Jaha", text: "Tinutuan adalah bubur sayuran khas Sulawesi Utara, sedangkan Nasi Jaha berbahan ketan, santan, dan jahe yang dibakar dalam bambu." }
+  {
+    image: "./assets/images/kabasaran.jpg",
+    title: "1. Tari Kabasaran (Tarian Waraney)",
+    text: "Berasal dari kata 'Kawasal ni Sarian', Tari Kabasaran memiliki 3 babak: Cakalele (bertarung), Kumoyak (mengayunkan senjata), dan Lalayaan (gembira usai perang). Penari membawa Santi (pedang), Wengkouw (tombak), Kelung (perisai), serta memakai busana merah Pakeyan Nuak berhias paruh burung Uwak."
+  },
+  {
+    image: "./assets/images/maengket.jpg",
+    title: "2. Tari Maengket & Tari Katrili",
+    text: "Tari Maengket adalah tarian rakyat berpasangan dengan 3 babak: Maowey Kamberu (syukur panen padi), Marambak (gotong royong membangun rumah), dan Lalayaan (pergaulan muda-mudi). Sementara Tari Katrili merupakan tarian pergaulan hasil akulturasi budaya Eropa-Minahasa."
+  },
+  {
+    image: "./assets/images/kolintang.jpg",
+    title: "3. Alat Musik Kolintang (UNESCO 2024)",
+    text: "Kolintang berasal dari bunyi bilah kayu ringan (kayu telur, bandaran, wenuang, cempaka): tong-ting-tang. Ansambelnya terdiri dari Ina (melodi), Uner (alto), Karua (tenor), Cella (cello), dan Loway (bass). Resmi diakui UNESCO sebagai Warisan Budaya Takbenda pada 5 Desember 2024."
+  },
+  {
+    image: "./assets/images/suku.jpg",
+    title: "4. Sub-Etnis & Bahasa Daerah Minahasa",
+    text: "Suku Minahasa ('Mina-esa' = menjadi satu) terdiri dari sub-etnis Tombulu, Tonsea, Tontemboan, Toulour (Tondano), Tonsawang, Pasan/Ratahan, Ponosakan, dan Bantik. Kosakata Tombulu antara lain: Wale (rumah), Teles (beli), Esa (satu), Tou (manusia), Tabea (salam hormat), Opo Wailan Wangko (Tuhan Maha Besar)."
+  },
+  {
+    image: "./assets/images/semboyan.jpg",
+    title: "5. Filosofi Hidup & Sistem Kepemimpinan",
+    text: "Semboyan 'Si Tou Timou Tumou Tou' (manusia hidup untuk memanusiakan orang lain) berpadu dengan tradisi gotong royong Mapalus. Dahulu masyarakat dipimpin oleh Walian (pemimpin adat/religi), Tonaas (pemimpin walak/pertanian), Teterusan (panglima perang), dan Potuasan (penasihat)."
+  },
+  {
+    image: "./assets/images/walewangko.jpg",
+    title: "6. Rumah Adat Walewangko (Rumah Pewaris)",
+    text: "Walewangko merupakan rumah panggung kayu dengan dua tangga di sisi kiri dan kanan bagian depan yang dipercaya menangkal roh jahat. Konstruksi sambungan kayunya lentur terhadap gempa, sedangkan kolong rumah berfungsi melindungi penghuni dan menyimpan hasil panen."
+  },
+  {
+    image: "./assets/images/waruga.jpg",
+    title: "7. Waruga Sawangan, Pinawetengan & Moraya",
+    text: "Waruga adalah makam batu megalitik (terbesar di Desa Sawangan, Minahasa Utara, >140 buah) tempat jenazah diletakkan dalam posisi jongkok menghadap utara. Di Tompaso terdapat Watu Pinawetengan (batu musyawarah pembagian wilayah), dan di Tondano terdapat Benteng Moraya saksi Perang Tondano."
+  },
+  {
+    image: "./assets/images/tinutuan.jpg",
+    title: "8. Kuliner Khas: Tinutuan hingga Nasi Jaha",
+    text: "Tinutuan (Bubur Manado) memadukan beras, labu kuning, kangkung, bayam, dan jagung, biasa disajikan bersama perkedel nike dan sambal roa. Ada pula Nasi Jaha (ketan, santan, jahe dibakar dalam bambu), Cakalang Fufu (ikan asap), Brenebon (sup kacang merah), Panada, dan Klappertaart."
+  },
+  {
+    image: "./assets/images/bentenan.jpg",
+    title: "9. Kain Tenun Bentenan & Busana Adat",
+    text: "Kain Bentenan adalah tenun ikat ganda sakral Minahasa yang awalnya terbuat dari serat kulit kayu (Fuya) dan serat pisang/nanas (Koffo), dengan 7 motif klasik seperti Kokerah dan Ka'iwu Patola. Busana adat prianya disebut Baju Baniang, sedangkan wanitanya mengenakan kebaya khas Minahasa."
+  },
+  {
+    image: "./assets/images/pahlawan.jpg",
+    title: "10. Pahlawan Nasional & Geografi Minahasa",
+    text: "Tokoh Pahlawan Nasional asal Minahasa antara lain Dr. Sam Ratulangi, Maria Walanda Maramis (pendiri PIKAT 1917), A.A. Maramis (penandatangan ORI), L.N. Palar (diplomat PBB), Arie Frederik Lasut, dan John Lie. Ikon alamnya meliputi Gunung Klabat (1.995 mdpl, tertinggi di Sulut), Danau Tondano, Burung Manguni, Yaki, dan Tarsius."
+  }
 ];
 
 function getAllLessonIds() {
@@ -402,10 +769,14 @@ function getAllLessonIds() {
 }
 
 const BADGES = [
-  { id: "b-first", icon: "🌱", name: "Langkah Pertama", desc: "Selesaikan 1 pelajaran", check: (s) => s.completedLessons.length >= 1 },
-  { id: "b-kolintang", icon: "🎶", name: "Penjaga Kolintang", desc: "Lulus seluruh Unit 1", check: (s) => ["u1-l1","u1-l2","u1-l3"].every(id => s.completedLessons.includes(id)) },
-  { id: "b-xp100", icon: "⚡", name: "Pejuang XP", desc: "Kumpulkan minimal 100 XP", check: (s) => s.xp >= 100 },
-  { id: "b-waraney", icon: "🦉", name: "Waraney Budaya", desc: "Selesaikan seluruh unit", check: (s) => s.completedLessons.length >= getAllLessonIds().length }
+  { id: "b-first", icon: "🌱", name: "Langkah Pertama", desc: "Selesaikan 1 modul", check: (s) => s.completedLessons.length >= 1 },
+  { id: "b-u1", icon: "🎶", name: "Penjaga Kolintang", desc: "Lulus seluruh Unit 1", check: (s) => ["u1-l1","u1-l2","u1-l3"].every(id => s.completedLessons.includes(id)) },
+  { id: "b-u2", icon: "🗣️", name: "Penutur Malesung", desc: "Lulus seluruh Unit 2", check: (s) => ["u2-l1","u2-l2"].every(id => s.completedLessons.includes(id)) },
+  { id: "b-u3", icon: "🪨", name: "Penjaga Waruga", desc: "Lulus seluruh Unit 3", check: (s) => ["u3-l1","u3-l2"].every(id => s.completedLessons.includes(id)) },
+  { id: "b-u4", icon: "🧵", name: "Pelestari Bentenan", desc: "Lulus seluruh Unit 4", check: (s) => ["u4-l1","u4-l2"].every(id => s.completedLessons.includes(id)) },
+  { id: "b-u5", icon: "🎖️", name: "Pewaris Waraney", desc: "Lulus seluruh Unit 5", check: (s) => ["u5-l1","u5-l2"].every(id => s.completedLessons.includes(id)) },
+  { id: "b-xp200", icon: "⚡", name: "Pejuang 200 XP", desc: "Kumpulkan minimal 200 XP", check: (s) => s.xp >= 200 },
+  { id: "b-master", icon: "🦉", name: "Tonaas Agung Budaya", desc: "Selesaikan seluruh 5 Unit", check: (s) => s.completedLessons.length >= getAllLessonIds().length }
 ];
 
 const KOLINTANG_NOTES = [
@@ -433,7 +804,7 @@ let activeQuiz = null;
 
 function loadState() {
   try {
-    const saved = localStorage.getItem("maesa_minahasa_v5");
+    const saved = localStorage.getItem("maesa_minahasa_v7");
     return saved ? { ...DEFAULT_STATE, ...JSON.parse(saved) } : { ...DEFAULT_STATE };
   } catch {
     return { ...DEFAULT_STATE };
@@ -441,16 +812,16 @@ function loadState() {
 }
 
 function saveState() {
-  localStorage.setItem("maesa_minahasa_v5", JSON.stringify(state));
+  localStorage.setItem("maesa_minahasa_v7", JSON.stringify(state));
   renderStats();
 }
 
 function getSortedLeaderboard() {
   return [
-    { name: "Pingkan", avatar: "👩", xp: 185 },
-    { name: "Toar", avatar: "🏹", xp: 140 },
-    { name: "Keke", avatar: "🌺", xp: 90 },
-    { name: "Opo Lumi", avatar: "🦉", xp: 45 },
+    { name: "Pingkan", avatar: "👩", xp: 280 },
+    { name: "Toar", avatar: "🏹", xp: 210 },
+    { name: "Keke", avatar: "🌺", xp: 140 },
+    { name: "Opo Lumi", avatar: "🦉", xp: 65 },
     { name: state.username + " (Anda)", avatar: "🛡️", xp: state.xp, isMe: true }
   ].sort((a, b) => b.xp - a.xp);
 }
@@ -466,62 +837,73 @@ function renderStats() {
   document.getElementById("prof-accuracy").textContent = `${acc}%`;
 
   const rankEl = document.getElementById("profile-rank");
-  if (state.xp >= 200) rankEl.textContent = "Tingkat 4 • Tonaas Agung Minahasa";
-  else if (state.xp >= 120) rankEl.textContent = "Tingkat 3 • Waraney Sejati";
-  else if (state.xp >= 50) rankEl.textContent = "Tingkat 2 • Pengamat Budaya";
+  if (state.xp >= 300) rankEl.textContent = "Tingkat 4 • Tonaas Agung Minahasa";
+  else if (state.xp >= 180) rankEl.textContent = "Tingkat 3 • Waraney Sejati";
+  else if (state.xp >= 70) rankEl.textContent = "Tingkat 2 • Pengamat Budaya";
   else rankEl.textContent = "Tingkat 1 • Penjelajah Malesung";
 
   const totalLessons = getAllLessonIds().length;
   const done = state.completedLessons.length;
-  const questText = document.getElementById("desktop-quest-text");
-  const questBar = document.getElementById("desktop-quest-bar");
-  if (questText && questBar) {
-    questText.textContent = `${done} dari ${totalLessons} pelajaran selesai`;
-    questBar.style.width = `${Math.round((done / totalLessons) * 100)}%`;
-  }
+  const pct = Math.round((done / totalLessons) * 100);
+  document.getElementById("learn-progress-text").textContent = `${done} dari ${totalLessons} modul tuntas`;
+  document.getElementById("learn-progress-pct").textContent = `${pct}%`;
+  document.getElementById("learn-progress-bar").style.width = `${pct}%`;
 }
+
+// IKON CENTANG BELAH KETUPAT BENTENAN (MENGGANTIKAN BINTANG)
+const COMPLETED_CHECK_SVG = `
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="20 6 9 17 4 12"></polyline>
+  </svg>
+`;
 
 function renderLearningPath() {
   const container = document.getElementById("learning-path-container");
   container.innerHTML = "";
   const allIds = getAllLessonIds();
 
-  UNITS.forEach((unit) => {
-    const banner = document.createElement("div");
-    banner.className = "unit-banner";
-    banner.style.background = unit.color;
-    banner.innerHTML = `<div><h3>${unit.title}</h3><p>${unit.desc}</p></div><span>🌺</span>`;
-    container.appendChild(banner);
+  UNITS.forEach((unit, unitIdx) => {
+    const unitDone = unit.lessons.filter(l => state.completedLessons.includes(l.id)).length;
+    const section = document.createElement("div");
+    section.className = "unit-section";
 
-    const nodesWrap = document.createElement("div");
-    nodesWrap.className = "unit-nodes";
+    section.innerHTML = `
+      <div class="unit-header">
+        <div>
+          <span class="unit-badge" style="background: ${unit.color};">Unit ${unitIdx + 1}</span>
+          <h3>${unit.title.replace(/^Unit \d+:\s*/, "")}</h3>
+          <p>${unit.desc}</p>
+        </div>
+        <span class="unit-counter">${unitDone} / ${unit.lessons.length} Tuntas</span>
+      </div>
+    `;
 
-    unit.lessons.forEach((lesson, idx) => {
+    const grid = document.createElement("div");
+    grid.className = "lesson-grid";
+
+    unit.lessons.forEach((lesson) => {
       const globalIndex = allIds.indexOf(lesson.id);
       const isCompleted = state.completedLessons.includes(lesson.id);
       const isUnlocked = globalIndex === 0 || state.completedLessons.includes(allIds[globalIndex - 1]);
 
-      const wrapper = document.createElement("div");
-      const offsetClass = idx % 3 === 1 ? "node-offset-right" : idx % 3 === 2 ? "node-offset-left" : "";
-      wrapper.className = `node-wrapper ${offsetClass}`;
-
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = `node-btn ${isCompleted ? "completed" : isUnlocked ? "unlocked" : "locked"}`;
-      btn.disabled = !isUnlocked;
-      btn.innerHTML = isCompleted ? "★" : isUnlocked ? lesson.icon : "🔒";
-      btn.addEventListener("click", () => startLesson(lesson));
-
-      const label = document.createElement("span");
-      label.className = "node-label";
-      label.textContent = lesson.title;
-
-      wrapper.appendChild(btn);
-      wrapper.appendChild(label);
-      nodesWrap.appendChild(wrapper);
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = `lesson-card ${isCompleted ? "completed" : isUnlocked ? "unlocked" : "locked"}`;
+      card.disabled = !isUnlocked;
+      card.innerHTML = `
+        <div class="lesson-emblem">${isCompleted ? COMPLETED_CHECK_SVG : isUnlocked ? lesson.icon : "🔒"}</div>
+        <div class="lesson-info">
+          <h4>${lesson.title}</h4>
+          <span class="lesson-meta">${lesson.questions.length} Tantangan • +${lesson.xpReward} XP</span>
+        </div>
+        <span class="lesson-status">${isCompleted ? "Tuntas" : isUnlocked ? "Mulai →" : "Terkunci"}</span>
+      `;
+      card.addEventListener("click", () => startLesson(lesson));
+      grid.appendChild(card);
     });
 
-    container.appendChild(nodesWrap);
+    section.appendChild(grid);
+    container.appendChild(section);
   });
 }
 
@@ -561,16 +943,6 @@ function renderLeaderboard() {
       <span class="lb-xp">${p.xp} XP</span>
     </div>
   `).join("");
-
-  const miniLb = document.getElementById("desktop-mini-lb");
-  if (miniLb) {
-    miniLb.innerHTML = sorted.slice(0, 3).map((p, i) => `
-      <div class="mini-lb-row">
-        <span>${i === 0 ? "🥇" : i === 1 ? "🥈" : "🥉"} ${p.name}</span>
-        <span style="color: var(--blue-tondano);">${p.xp} XP</span>
-      </div>
-    `).join("");
-  }
 }
 
 function renderBadges() {
@@ -668,11 +1040,11 @@ function renderQuestion() {
 
     const list = document.createElement("div");
     list.className = "options-list";
-    q.options.forEach((opt) => {
+    q.options.forEach((opt, idx) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "option-btn";
-      btn.textContent = opt;
+      btn.innerHTML = `<span class="opt-badge">${String.fromCharCode(65 + idx)}</span><span>${opt}</span>`;
       btn.addEventListener("click", () => {
         list.querySelectorAll(".option-btn").forEach(b => b.classList.remove("selected"));
         btn.classList.add("selected");
@@ -787,7 +1159,7 @@ function renderQuestion() {
             activeQuiz.combo = 0;
           }
           AudioEngine.playSuccess();
-          showFeedback(true, "Semua Pasangan Cocok!", q.explanation);
+          showFeedback(true, "Tabea! Semua Pasangan Cocok!", q.explanation);
           saveState();
         }
       } else {
@@ -872,11 +1244,12 @@ function renderQuestion() {
 
 function showFeedback(isCorrect, title, desc) {
   const sheet = document.getElementById("feedback-sheet");
-  sheet.className = `feedback-sheet ${isCorrect ? "correct" : "wrong"}`;
+  sheet.className = `feedback-card ${isCorrect ? "correct" : "wrong"}`;
   document.getElementById("feedback-icon").textContent = isCorrect ? "✓" : "✕";
   document.getElementById("feedback-title").textContent = title;
   document.getElementById("feedback-desc").textContent = desc;
   sheet.classList.remove("hidden");
+  document.getElementById("quiz-footer").classList.add("hidden");
 }
 
 function finishLesson() {
@@ -934,7 +1307,7 @@ function initApp() {
       state.totalCorrect += 1;
       activeQuiz.correctCount += 1;
       activeQuiz.combo += 1;
-      const title = activeQuiz.combo >= 2 ? `Hebat! Combo x${activeQuiz.combo}` : "Mauliate! Jawaban Benar!";
+      const title = activeQuiz.combo >= 2 ? `Hebat! Combo x${activeQuiz.combo}` : "Tabea! Jawaban Benar!";
       showFeedback(true, title, q.explanation);
     } else {
       AudioEngine.playError();

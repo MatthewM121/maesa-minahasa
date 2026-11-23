@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#B91C1C" />
+  <meta name="theme-color" content="#A61C1C" />
   <meta name="description" content="Aplikasi Edukasi Kesenian dan Kebudayaan Minahasa Berbasis Gamifikasi" />
-  <title>MAESA - Belajar Budaya Minahasa</title>
+  <title>MAESA - Edukasi Budaya Minahasa</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=7" />
 </head>
 <body>
   <div id="app" class="app-shell">
-    <!-- SIDEBAR KIRI (TABLET & PC) -->
+    <!-- SIDEBAR NAVIGASI (TABLET & PC) -->
     <aside class="desktop-sidebar">
       <div class="sidebar-brand">
         <img src="./assets/images/logo.png" alt="Logo MAESA" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
         <span class="brand-icon-fallback" style="display:none;" aria-hidden="true">🦉</span>
         <div>
           <span class="brand-name">MAESA</span>
-          <small class="brand-sub">Budaya Minahasa</small>
+          <small class="brand-sub">Ensiklopedia & Kuis Minahasa</small>
         </div>
       </div>
 
       <nav class="sidebar-nav">
         <button type="button" class="side-nav-btn active" data-target="view-learn">
-          <span class="nav-icon">🗺️</span>
-          <span>Belajar</span>
+          <span class="nav-icon">📖</span>
+          <span>Modul Belajar</span>
         </button>
         <button type="button" class="side-nav-btn" data-target="view-library">
           <span class="nav-icon">🎶</span>
@@ -45,13 +45,22 @@
         </button>
       </nav>
 
-      <div class="sidebar-footer-tip">
-        <strong>Si Tou Timou Tumou Tou</strong>
-        <p>Edukasi Gamifikasi Berbasis MDLC</p>
+      <div class="sidebar-footer-card">
+        <div class="sidebar-stats">
+          <div>
+            <small>Streak</small>
+            <strong>🔥 <span data-stat="streak">1</span> Hari</strong>
+          </div>
+          <div>
+            <small>Poin XP</small>
+            <strong>⚡ <span data-stat="xp">0</span> XP</strong>
+          </div>
+        </div>
+        <p class="sidebar-motto">"Si Tou Timou Tumou Tou"</p>
       </div>
     </aside>
 
-    <!-- KOLOM TENGAH -->
+    <!-- AREA KONTEN UTAMA -->
     <div class="center-column">
       <header id="top-bar" class="top-bar">
         <div class="brand-pill">
@@ -72,39 +81,54 @@
       </header>
 
       <main id="main-content" class="main-content">
-        <!-- TAB 1: JALUR BELAJAR -->
+        <!-- TAB 1: MODUL BELAJAR -->
         <section id="view-learn" class="view active">
           <div class="hero-card">
-            <div class="hero-text">
-              <span class="hero-tag">Filosofi Minahasa</span>
-              <h1>Si Tou Timou Tumou Tou</h1>
-              <p>Manusia hidup untuk memanusiakan orang lain. Selesaikan seluruh misi budaya untuk menjadi <strong>Waraney Budaya</strong>!</p>
-            </div>
-            <div class="hero-mascot">
-              <img src="./assets/images/mascot.png" alt="Maskot Budaya" class="mascot-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-              <svg viewBox="0 0 80 80" width="72" height="72" style="display:none;" aria-hidden="true">
-                <circle cx="40" cy="40" r="36" fill="#FEF3C7" />
-                <ellipse cx="40" cy="46" rx="22" ry="24" fill="#92400E" />
-                <ellipse cx="40" cy="52" rx="14" ry="15" fill="#FDE68A" />
-                <circle cx="31" cy="36" r="7" fill="#FFFFFF" />
-                <circle cx="49" cy="36" r="7" fill="#FFFFFF" />
-                <circle cx="32" cy="36" r="3.5" fill="#1F2937" />
-                <circle cx="48" cy="36" r="3.5" fill="#1F2937" />
-                <polygon points="40,41 36,47 44,47" fill="#F59E0B" />
-                <path d="M22 25 L30 30 L26 34 Z" fill="#78350F" />
-                <path d="M58 25 L50 30 L54 34 Z" fill="#78350F" />
-              </svg>
+            <div class="hero-pattern" aria-hidden="true"></div>
+            <div class="hero-inner">
+              <div class="hero-text">
+                <span class="hero-tag">Warisan Tanah Malesung</span>
+                <h1>Jelajahi Kesenian & Budaya Minahasa</h1>
+                <p>Pelajari tarian, alat musik Kolintang, bahasa Tombulu, situs bersejarah, hingga tokoh pahlawan Minahasa secara interaktif.</p>
+              </div>
+              <div class="hero-mascot">
+                <img src="./assets/images/mascot.png" alt="Maskot Budaya" class="mascot-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                <svg viewBox="0 0 80 80" width="76" height="76" style="display:none;" aria-hidden="true">
+                  <rect x="6" y="6" width="68" height="68" rx="18" fill="#FEF3C7" />
+                  <ellipse cx="40" cy="46" rx="20" ry="22" fill="#7C2D12" />
+                  <ellipse cx="40" cy="52" rx="13" ry="14" fill="#FDE68A" />
+                  <circle cx="32" cy="37" r="6.5" fill="#FFFFFF" />
+                  <circle cx="48" cy="37" r="6.5" fill="#FFFFFF" />
+                  <circle cx="33" cy="37" r="3" fill="#1F2937" />
+                  <circle cx="47" cy="37" r="3" fill="#1F2937" />
+                  <polygon points="40,42 36,48 44,48" fill="#D97706" />
+                </svg>
+              </div>
             </div>
           </div>
 
-          <div id="learning-path-container" class="learning-path"></div>
+          <!-- RINGKASAN PROGRES KURIKULUM -->
+          <div class="curriculum-summary">
+            <div class="summary-top">
+              <div>
+                <strong>Progres Kurikulum Budaya</strong>
+                <p id="learn-progress-text">0 dari 11 modul tuntas</p>
+              </div>
+              <span id="learn-progress-pct" class="pct-pill">0%</span>
+            </div>
+            <div class="progress-track">
+              <div id="learn-progress-bar" class="progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div id="learning-path-container" class="modules-container"></div>
         </section>
 
         <!-- TAB 2: STUDIO KOLINTANG & PUSTAKA -->
         <section id="view-library" class="view">
           <div class="section-header">
             <h2>🎵 Studio Kolintang Mini</h2>
-            <p>Ketuk bilah kayu Kolintang (Warisan UNESCO 2024) dan coba mainkan lagu daerah Minahasa!</p>
+            <p>Ketuk bilah kayu Kolintang (Warisan Budaya Takbenda UNESCO 2024) untuk mencoba nada lagu daerah Minahasa.</p>
           </div>
 
           <div class="kolintang-card">
@@ -115,9 +139,9 @@
             <div id="kolintang-keys" class="kolintang-keys"></div>
           </div>
 
-          <div class="section-header" style="margin-top: 24px;">
+          <div class="section-header" style="margin-top: 28px;">
             <h2>📚 Pustaka Budaya Minahasa</h2>
-            <p>Ringkasan materi kebudayaan untuk bekal sebelum mengerjakan tantangan.</p>
+            <p>Materi ringkas terverifikasi dari Unit 1 hingga Unit 5 sebagai bahan bacaan belajar.</p>
           </div>
           <div id="encyclopedia-list" class="encyclopedia-list"></div>
         </section>
@@ -125,8 +149,8 @@
         <!-- TAB 3: PERINGKAT -->
         <section id="view-leaderboard" class="view">
           <div class="section-header">
-            <h2>🏆 Liga Waraney Minahasa</h2>
-            <p>Kumpulkan XP dari setiap pelajaran untuk naik ke peringkat puncak.</p>
+            <h2>🏆 Papan Peringkat Waraney</h2>
+            <p>Selesaikan modul dan kumpulkan XP untuk mencapai peringkat teratas.</p>
           </div>
           <div id="leaderboard-list" class="leaderboard-list"></div>
         </section>
@@ -150,7 +174,7 @@
             </div>
             <div class="mini-stat-box">
               <strong id="prof-lessons">0</strong>
-              <span>Pelajaran Lulus</span>
+              <span>Modul Tuntas</span>
             </div>
             <div class="mini-stat-box">
               <strong id="prof-accuracy">100%</strong>
@@ -159,7 +183,7 @@
           </div>
 
           <div class="section-header">
-            <h2>🎖️ Lencana Prestasi</h2>
+            <h2>🎖️ Lencana Pencapaian</h2>
           </div>
           <div id="badges-grid" class="badges-grid"></div>
 
@@ -168,7 +192,7 @@
           </div>
         </section>
 
-        <!-- TAB 5: TENTANG APLIKASI & DEVELOPER (TERPISAH) -->
+        <!-- TAB 5: TENTANG APLIKASI & DEVELOPER -->
         <section id="view-about" class="view">
           <div class="section-header">
             <h2>ℹ️ Tentang Aplikasi & Pengembang</h2>
@@ -181,66 +205,34 @@
               <img src="./assets/images/dev.jpg" alt="Foto Pengembang" class="dev-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
               <div class="dev-photo-fallback" style="display:none;">👨‍💻</div>
               <div class="dev-info">
-                <h3>[Nama Lengkap Anda]</h3>
-                <span class="dev-role">Developer & Peneliti (Mahasiswa Semester 7)</span>
-                <p class="dev-meta">NIM: [NIM Anda] • Prodi [Teknik Informatika / Sistem Informasi]</p>
+                <h3>[Matthew Manggaribet]</h3>
+                <p class="dev-meta">NIM: [23210063] • Prodi [Teknik Informatika]</p>
               </div>
             </div>
             <div class="dev-desc">
               <p>
-                Aplikasi <strong>MAESA</strong> dikembangkan sebagai luaran <strong>Proyek Riset (20 SKS)</strong> dengan judul:
+                Aplikasi <strong>MAESA</strong> dikembangkan sebagai <strong>Proyek Riset</strong> dengan judul:
                 <em>"Pengembangan Aplikasi Edukasi Kebudayaan Minahasa Berbasis Android Menggunakan Konsep Gamifikasi dan Metode MDLC"</em>.
               </p>
               <div class="dev-tags">
-                <span>📱 Android (Web-to-APK)</span>
+                <span>📱 Android</span>
                 <span>🎮 Gamifikasi</span>
                 <span>📐 Metode MDLC</span>
                 <span>📦 Versi 1.0.0</span>
               </div>
-              <p class="dev-contact">Kontak Pengembang: <strong>emailanda@kampus.ac.id</strong></p>
+              <p class="dev-contact">Kontak Pengembang: <strong>23210063@unima.ac.id</strong></p>
             </div>
-          </div>
-
-          <div class="about-app-box">
-            <h3>📐 Metode Pengembangan (MDLC)</h3>
-            <p>Dikembangkan melalui 6 tahapan Multimedia Development Life Cycle (Luther-Sutopo): <em>Concept, Design, Material Collecting, Assembly, Testing,</em> dan <em>Distribution</em> agar pembelajaran seni dan budaya Minahasa menjadi interaktif serta menyenangkan.</p>
           </div>
         </section>
       </main>
     </div>
-
-    <!-- PANEL KANAN (PC / LAPTOP >= 1024px) -->
-    <aside class="desktop-right-panel">
-      <div class="right-stats-bar">
-        <div class="stat-pill streak" title="Hari Beruntun">🔥 <span data-stat="streak">1</span> Hari</div>
-        <div class="stat-pill xp" title="Total XP">⚡ <span data-stat="xp">0</span> XP</div>
-      </div>
-
-      <div class="panel-widget">
-        <h3>🎯 Progres Kurikulum</h3>
-        <p id="desktop-quest-text" class="widget-sub">0 dari 8 pelajaran selesai</p>
-        <div class="progress-track">
-          <div id="desktop-quest-bar" class="progress-fill" style="width: 0%;"></div>
-        </div>
-      </div>
-
-      <div class="panel-widget">
-        <h3>🏆 3 Besar Waraney</h3>
-        <div id="desktop-mini-lb" class="mini-lb"></div>
-      </div>
-
-      <div class="panel-widget tip-widget">
-        <h3>🦉 Tahukah Anda?</h3>
-        <p>Burung <strong>Manguni</strong> (burung hantu khas Minahasa) dihormati leluhur sebagai simbol kebijaksanaan dan pembawa pesan alam sebelum mengambil keputusan penting.</p>
-      </div>
-    </aside>
   </div>
 
-  <!-- BOTTOM NAVIGATION (MOBILE < 768px - 5 TAB) -->
+  <!-- BOTTOM NAVIGATION (MOBILE < 768px) -->
   <nav id="bottom-nav" class="bottom-nav">
     <button type="button" class="nav-btn active" data-target="view-learn">
-      <span class="nav-icon">🗺️</span>
-      <span class="nav-label">Belajar</span>
+      <span class="nav-icon">🧭</span>
+      <span class="nav-label">Modul</span>
     </button>
     <button type="button" class="nav-btn" data-target="view-library">
       <span class="nav-icon">🎶</span>
@@ -260,50 +252,49 @@
     </button>
   </nav>
 
-  <!-- OVERLAY HALAMAN KUIS INTERAKTIF -->
+  <!-- OVERLAY HALAMAN KUIS (GAYA KARTU EDTECH MODERN) -->
   <div id="quiz-overlay" class="quiz-overlay hidden">
-    <div class="quiz-header">
-      <button type="button" id="btn-quit-quiz" class="btn-icon-close" aria-label="Keluar Kuis">✕</button>
-      <div class="progress-track">
-        <div id="quiz-progress-bar" class="progress-fill" style="width: 0%;"></div>
-      </div>
-      <div id="quiz-step-count" class="quiz-step-count">1 / 3</div>
-    </div>
-
-    <div id="quiz-body" class="quiz-body">
-      <div id="quiz-combo-pill" class="combo-pill hidden">🔥 Combo x2!</div>
-      <div id="quiz-type-label" class="quiz-type-label">PILIHAN GANDA</div>
-      <h2 id="quiz-question" class="quiz-question">Pertanyaan muncul di sini</h2>
-      <div id="quiz-visual" class="quiz-visual"></div>
-      <div id="quiz-interaction" class="quiz-interaction"></div>
-    </div>
-
-    <div id="quiz-footer" class="quiz-footer">
-      <div class="quiz-footer-inner">
-        <button type="button" id="btn-check-answer" class="btn-check" disabled>PERIKSA</button>
-      </div>
-    </div>
-
-    <div id="feedback-sheet" class="feedback-sheet hidden">
-      <div class="feedback-inner">
-        <div class="feedback-content">
-          <div id="feedback-icon" class="feedback-icon">✓</div>
-          <div>
-            <h3 id="feedback-title">Benar!</h3>
-            <p id="feedback-desc">Penjelasan singkat.</p>
-          </div>
+    <div class="quiz-shell">
+      <div class="quiz-header">
+        <button type="button" id="btn-quit-quiz" class="btn-icon-close" aria-label="Keluar Kuis">✕</button>
+        <div class="progress-track">
+          <div id="quiz-progress-bar" class="progress-fill" style="width: 0%;"></div>
         </div>
-        <button type="button" id="btn-next-question" class="btn-next">LANJUTKAN</button>
+        <div id="quiz-step-count" class="quiz-step-count">1 / 3</div>
+      </div>
+
+      <div id="quiz-body" class="quiz-body">
+        <div id="quiz-combo-pill" class="combo-pill hidden">🔥 Combo x2!</div>
+        <div id="quiz-type-label" class="quiz-type-label">PILIHAN GANDA</div>
+        <h2 id="quiz-question" class="quiz-question">Pertanyaan muncul di sini</h2>
+        <div id="quiz-visual" class="quiz-visual"></div>
+        <div id="quiz-interaction" class="quiz-interaction"></div>
+
+        <!-- KARTU FEEDBACK INLINE -->
+        <div id="feedback-sheet" class="feedback-card hidden">
+          <div class="feedback-content">
+            <div id="feedback-icon" class="feedback-icon">✓</div>
+            <div>
+              <h3 id="feedback-title">Benar!</h3>
+              <p id="feedback-desc">Penjelasan singkat.</p>
+            </div>
+          </div>
+          <button type="button" id="btn-next-question" class="btn-next">Soal Berikutnya →</button>
+        </div>
+      </div>
+
+      <div id="quiz-footer" class="quiz-footer">
+        <button type="button" id="btn-check-answer" class="btn-check" disabled>Periksa Jawaban</button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL HASIL SELESAI PELAJARAN -->
+  <!-- MODAL HASIL SELESAI MODUL -->
   <div id="result-modal" class="modal-overlay hidden">
     <div class="modal-card">
-      <div id="result-emoji" class="result-emoji">🎉</div>
-      <h2 id="result-title">Pelajaran Selesai!</h2>
-      <p id="result-subtitle">Luar biasa, pengetahuan budaya Minahasa Anda bertambah!</p>
+      <div id="result-emoji" class="result-emoji">🎖️</div>
+      <h2 id="result-title">Modul Tuntas!</h2>
+      <p id="result-subtitle">Luar biasa, wawasan budaya Minahasa Anda semakin bertambah.</p>
       <div class="result-stats">
         <div class="res-box">
           <span>XP Didapat</span>
@@ -314,10 +305,10 @@
           <strong id="res-acc">100%</strong>
         </div>
       </div>
-      <button type="button" id="btn-close-result" class="btn-primary-full">KEMBALI KE PETA</button>
+      <button type="button" id="btn-close-result" class="btn-primary-full">Kembali ke Daftar Modul</button>
     </div>
   </div>
 
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
